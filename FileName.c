@@ -482,12 +482,14 @@ void SetupGame()
 
 void RandomBoard()
 {
-	srand(time(0));
+
 	for (int i = 0; i < boardSize.y; i++)
 	{
 		for (int j = 0; j < boardSize.x; j++)
 		{
+			srand(time(0));
 			int randX = rand() % boardSize.x;
+			srand(time(0) +5252);
 			int randY = rand() % boardSize.y;
 			int store = board[j][i].mined;
 			board[j][i].mined = board[randX][randY].mined;
@@ -549,20 +551,38 @@ void OpenField()
 	{
 		if (openedFirstField == 0)
 		{
-			if (board[pointer.x][pointer.y].mined == 1)
-			{
-				board[pointer.x][pointer.y].mined = 0;
-				int iterations = 100;
-				while (--iterations > 0)
+			for (int i = -1; i <= 1; i++)
+				for (int j = -1; j <= 1; j++)
 				{
-					srand(time(0));
-					int randX = rand() % boardSize.x;
-					int randY = rand() % boardSize.y;
-					if (board[randX][randY].mined == 0)
+					if (j + pointer.x > boardSize.x - 1) continue;
+					if (i + pointer.y > boardSize.y - 1) continue;
+					if (j + pointer.x < 0) continue;
+					if (i + pointer.y < 0) continue;
+					if (board[pointer.x + j][pointer.y + i].mined == 1)
 					{
-						board[randX][randY].mined = 1;
-						break;
+						board[pointer.x + j][pointer.y + i].mined = 0;
+						int iterations = 100;
+						while (--iterations > 0)
+						{
+							srand(time(0));
+							int randX = rand() % boardSize.x;
+							srand(time(0) + 5252);
+							int randY = rand() % boardSize.y;
+							if (board[randX][randY].mined == 0)
+							{
+								board[randX][randY].mined = 1;
+								break;
+							}
+						}
+
 					}
+				}
+			mines = 0;
+			for (int i = 0; i < boardSize.y; i++)
+			{
+				for (int j = 0; j < boardSize.x; j++)
+				{
+					if (board[j][i].mined)mines++;
 				}
 			}
 			SetupNeighbours();
