@@ -180,6 +180,7 @@ void StartGame()
 			if (m < 0) { system("@cls||clear"); printf("mora da bude barem jedna mina\n\n");	continue; }
 			boardSize = (Vector2){ x,y };
 			mines = m;
+			if (mines > boardSize.x * boardSize.y)mines = boardSize.x * boardSize.y;
 			break;
 		}
 		break;
@@ -482,14 +483,13 @@ void SetupGame()
 
 void RandomBoard()
 {
-
+	srand(time(0));
 	for (int i = 0; i < boardSize.y; i++)
 	{
 		for (int j = 0; j < boardSize.x; j++)
 		{
-			srand(time(0));
+
 			int randX = rand() % boardSize.x;
-			srand(time(0) +5252);
 			int randY = rand() % boardSize.y;
 			int store = board[j][i].mined;
 			board[j][i].mined = board[randX][randY].mined;
@@ -598,7 +598,18 @@ void OpenField()
 		}
 
 		RecusveOpenNeighbours((Vector2) { pointer.x, pointer.y });
-
+		int unopenedEmpty = 0;
+		for (int i = 0; i < boardSize.y; i++)
+		{
+			for (int j = 0; j < boardSize.x; j++)
+			{
+				if (board[j][i].opened == 0 && board[j][i].mined == 0)unopenedEmpty++;
+			}
+		}
+		if (unopenedEmpty == 0)
+		{
+			update = WinUpdate;
+		}
 	}
 }
 

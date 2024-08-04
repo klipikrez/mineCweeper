@@ -1,1 +1,16 @@
-﻿  mineCweeper.vcxproj -> D:\skskskskskk\POG\mineCweeper\x64\Debug\mineCweeper.exe
+﻿  FileName.c
+D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(100,7): warning C4047: 'initializing': 'char' differs in levels of indirection from 'void *'
+D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(266,18): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(363,9): warning C4477: 'printf' : format string '%d' requires an argument of type 'int', but variadic argument 3 has type 'time_t'
+  D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(363,9):
+  consider using '%lld' in the format string
+  D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(363,9):
+  consider using '%Id' in the format string
+  D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(363,9):
+  consider using '%I64d' in the format string
+  
+D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(486,8): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(567,14): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(569,22): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\skskskskskk\POG\mineCweeper\mineCweeper\FileName.c(594,26): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+  mineCweeper.vcxproj -> D:\skskskskskk\POG\mineCweeper\x64\Debug\mineCweeper.exe
